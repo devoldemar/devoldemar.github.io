@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Test base HEVC/H.265 playback capabilities of web browser</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="keywords" content="hevc, h265, h.265, play hevc in browser, hevc browser support, h265 browser support, test hevc videos">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<style>	
+			html {
+				font-size: 14px;
+			}
+			body {
+				color: #1D1D2D;
+				font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", sans-serif;
+				background: #f9f8f8;
+				font-size: inherit;
+				margin: 0;
+			}
+			h1, h2 {
+				margin-top: 0;
+			}
+			h1 {
+				font-size: 2.5rem;
+			}
+			h2 {
+				opacity: 0.5;
+			}
+			h3 {
+				font-weight: 700;
+				font-size: larger;
+				margin-bottom: 0.5rem;
+			}
+			h3.em {
+				font-weight: 600;
+				color: #42a7cf;
+				margin-bottom: 1rem;
+			}
+			h3 + p {
+				line-height: 1.5;
+			}
+			section > div {
+				margin-top: 40px;
+			}
+			video {
+				display: block;
+				width: 100%;
+			}
+			table {
+				border-collapse: collapse;
+				margin: 0 0 .5rem;
+				visibility: hidden;
+			}
+			table th, table td {
+				padding: 0.5rem 0;
+				text-align: left;
+			}
+			table th ~ th, table td ~ td {
+				padding-left: 1.25rem;
+			}
+			p {
+				margin: 0 0 .5rem;
+			}
+			a {
+				color: #08c;
+			}
+			code {
+				padding: 2px 5px;
+				background: #f4f4f1;
+				border-radius: 3px;
+			}
+			pre {
+				width: 150px;
+				white-space: pre-line;
+				margin: -0.5rem 0 .5rem;
+			}
+			.container {
+				width: 1380px;
+				margin: 0 auto;
+				background: white;
+				border-top: 6px solid #2b2928;
+				min-height: 100vh;
+			}
+			.content-wrapper {
+				padding: 50px;
+			}
+			.note {
+				opacity: 0.65;
+			}
+			@media (min-width: 1851px) {
+				html {
+					font-size: 16px;
+				}
+			}
+			@media (max-width: 1280px) {
+				html {
+					font-size: 13px;
+				}
+				.container {
+					width: 100%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="content-wrapper">
+				<header>
+					<h1>High Efficiency Video Coding</h1>
+					<h2>Base HEVC playback capabilities of your web browser</h2>
+				</header>
+				<section>
+					<div>
+						<h3 class="em">Main profile, 1280&times;720@24FPS</h3>
+						<video src="https://ddstorage.org/samples/hevc/main720p.mp4" preload="metadata" controls></video>
+					</div>
+					<div>
+						<p>The summary below is computed using video/mp4 as content type.</p>
+						<table>
+							<thead>
+								<tr>
+									<th>Profile</th>
+									<th>Resolution</th>
+									<th>FPS</th>
+									<th>Codec example</th>
+									<th>Supported</th>
+									<th>Supported via MSE*</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Main</td>
+									<td>1K (1280&times;720)</td>
+									<td>30</td>
+									<td>hvc1.1.6.L93.B0</td>
+									<td>?</td>
+									<td>?</td>
+								</tr>
+								<tr>
+									<td>Main</td>
+									<td>2K (1920&times;1080)</td>
+									<td>30</td>
+									<td>hvc1.1.6.L120.80</td>
+									<td>?</td>
+									<td>?</td>
+								</tr>
+								<tr>
+									<td>Main</td>
+									<td>4K (3840&times;2160)</td>
+									<td>30</td>
+									<td>hvc1.1.6.L150.90</td>
+									<td>?</td>
+									<td>?</td>
+								</tr>
+								<tr>
+									<td>Main</td>
+									<td>4K (3840&times;2160)</td>
+									<td>60</td>
+									<td>hvc1.1.6.L153.90</td>
+									<td>?</td>
+									<td>?</td>
+								</tr>
+								<tr>
+									<td>Main</td>
+									<td>8K (7680&times;4320)</td>
+									<td>30</td>
+									<td>hvc1.1.6.L180.90</td>
+									<td>?</td>
+									<td>?</td>
+								</tr>
+								<tr>
+									<td>Main 10</td>
+									<td>2K (1920&times;1080)</td>
+									<td>30</td>
+									<td>hvc1.2.4.L120.90</td>
+									<td>?</td>
+									<td>?</td>
+								</tr>
+								<tr>
+									<td>Main 10</td>
+									<td>4K (3840&times;2160)</td>
+									<td>60</td>
+									<td>hvc1.2.4.L153.90</td>
+									<td>?</td>
+									<td>?</td>
+								</tr>
+								<tr>
+									<td>Rext</td>
+									<td>4K (3840&times;2160)</td>
+									<td>30</td>
+									<td>hvc1.4.10.L150.9C</td>
+									<td>?</td>
+									<td>?</td>
+								</tr>
+								<tr>
+									<td>Dolby Vision 5</td>
+									<td>4K (3840&times;2160)</td>
+									<td>24</td>
+									<td>dvhe.05.06</td>
+									<td>?</td>
+									<td>?</td>
+								</tr>
+							</tbody>
+						</table>
+						<p class="note">* MSE support is required to play streaming media, primarily on desktops and tablets.</p>
+						<p class="note" style="display:none">** DV encoded video in most cases can be played in compatibility mode if Main 10 profile is supported.</p>
+					</div>
+					<script>
+						(function() {
+							var video = document.createElement('video');
+							var ms = window.MediaSource;
+							var canPlay = function(codec) {
+								return video.canPlayType('video/mp4; codecs=' + codec) !== '';
+							};
+							var canPlayMSE = function(codec) {
+								return ms && ms.isTypeSupported('video/mp4; codecs=' + codec);
+							};
+							var rows = document.querySelectorAll('tbody > tr');
+							var codec = '', cols = null;
+							for (var i = 0; i < rows.length; i++) {
+								cols = rows[i].querySelectorAll('td');
+								codec = cols[3].innerHTML;
+								cols[4].innerHTML = canPlay(codec) ? 'YES' : 'NO' + (codec.substr(0, 3) !== 'dvh' ? '' : '**');
+								cols[5].innerHTML = canPlayMSE(codec) ? 'YES' : 'NO' + (codec.substr(0, 3) !== 'dvh' ? '' : '**');
+								if (cols[4].innerHTML.substr(-2) === '**' || cols[5].innerHTML.substr(-2) === '**') {
+									document.querySelector('.note + .note').style.display = 'block';
+								}
+							}
+							document.querySelector('table').style.visibility = 'visible';
+						})();
+					</script>
+				</section>
+				<section>
+					<div>
+						<h3>Hardware support</h3>
+						<p>
+							<a target="_blank" href="https://bluesky-soft.com/en/dxvac/deviceInfo/decoder/intel.html">Intel (Bluesky)</a><br/>
+							<a target="_blank" href="https://www.intel.com/content/www/us/en/docs/onevpl/developer-reference-media-intel-hardware/1-1/overview.html">Intel (manufacturer)</a><br/>
+							<a target="_blank" href="https://bluesky-soft.com/en/dxvac/deviceInfo/decoder/amd.html">AMD (Bluesky)</a><br/>
+							<a target="_blank" href="https://www.amd.com/en/products/graphics/radeon-for-creators/video-editing.html#tabs-b6a36ad588-item-0cb6dbfc4b-tab">AMD (manufacturer)</a><br/>
+							<a target="_blank" href="https://bluesky-soft.com/en/dxvac/deviceInfo/decoder/nvidia.html">NVIDIA (Bluesky)</a><br/>
+							<a target="_blank" href="https://developer.nvidia.com/video-codec-sdk">NVIDIA (manufacturer)</a> (scroll to "NVDEC - Hardware-Accelerated Video Decoding")
+						</p>
+					</div>
+					<div>
+						<h3>Microsoft Edge</h3>
+						<p>
+							Depends on Windows Media Foundation. The following components should be installed in your system:<br/>
+							&ndash; Media Feature Pack (sometimes already installed)<br/>
+							&ndash; HEVC Video Extensions from Microsoft Store<br/>
+							Open <code>edge://gpu</code> in order to checkout video decoding capabilities.
+						</p>
+					</div>
+					<div>
+						<h3>Google Chrome</h3>
+						<p>
+							Graphics (hardware) acceleration should be turned on in browser settings <code>chrome://settings/system</code><br/>
+							Open <code>chrome://gpu</code> in order to checkout video decoding capabilities.
+						</p>
+					</div>
+					<div>
+						<h3>Safari</h3>
+						<p>
+							Available on all Apple devices, starting from MAC OS High Sierra (version 10.13) or IOS 11.<br/>
+							<a target="_blank" href="https://support.apple.com/en-us/116944">Using HEVC media on Apple devices</a><br/>
+							<!--<a target="_blank" href="https://developer.apple.com/documentation/avfoundation/avvideocodectype/2875385-hevc">AVFoundation HEVC</a>-->
+						</p>
+					</div>
+					<div>
+						<h3>Mozilla Firefox</h3>
+						<p>
+							Same as Microsoft Edge. In addition, two flags have to be set via <code>about:config</code> section:<br/>
+							<pre>
+								media.wmf.enabled
+								media.wmf.hevc.enabled
+							</pre>
+							Open <code>about://support</code> in order to checkout available media codecs.
+						</p>
+					</div>
+				</section>
+			</div>
+		</div>
+	</body>
+</html>
