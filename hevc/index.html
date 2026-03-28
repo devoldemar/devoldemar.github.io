@@ -1,17 +1,19 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<title>Test base HEVC/H.265 playback capabilities of web browser</title>
+		<title>Discover HEVC/H.265 playback capabilities of web browser</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta name="keywords" content="hevc, h265, h.265, play hevc in browser, hevc browser support, h265 browser support, test hevc videos">
+		<meta name="keywords" content="try hevc, try h265, test h.265, play hevc in browser, test hevc browser support, check h265 browser support, hevc video sample">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<style>	
+			@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/Inter-Regular.woff2") format("woff2"); }
+			@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("/fonts/Inter-SemiBold.woff2") format("woff2"); }
 			html {
 				font-size: 14px;
 			}
 			body {
 				color: #1D1D2D;
-				font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", sans-serif;
+				font-family: Inter, sans-serif;
 				background: #f9f8f8;
 				font-size: inherit;
 				margin: 0;
@@ -26,14 +28,9 @@
 				opacity: 0.5;
 			}
 			h3 {
-				font-weight: 700;
+				font-weight: bold;
 				font-size: larger;
 				margin-bottom: 0.5rem;
-			}
-			h3.em {
-				font-weight: 600;
-				color: #42a7cf;
-				margin-bottom: 1rem;
 			}
 			h3 + p {
 				line-height: 1.5;
@@ -73,6 +70,11 @@
 				white-space: pre-line;
 				margin: -0.5rem 0 .5rem;
 			}
+			video {
+				position: absolute;
+				top: 0;
+				min-height: 100%;
+			}			
 			.container {
 				width: 1380px;
 				margin: 0 auto;
@@ -85,6 +87,39 @@
 			}
 			.note {
 				opacity: 0.65;
+			}
+			.nav-tabs {
+				border-bottom: 1px solid #ddd;
+				overflow: hidden;
+				padding: 0;
+			}
+			.nav-tabs > li {
+				float: left;
+				list-style-type: none;
+			}
+			.nav-tabs > li > a {
+				display: block;
+				padding-top: 8px;
+				padding-bottom: 8px;
+				padding-right: 12px;
+				padding-left: 12px;
+				border: 1px solid transparent;
+				border-bottom: none;
+				border-radius: 3px 3px 0 0;
+				margin-right: 5px;
+				text-decoration: none;
+				font-size: larger;
+			}
+			.nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {
+				color: #7b7b7b;
+				cursor: default;
+				background-color: #fff;
+				border-color: #ddd;
+			}
+			.nav-tabs ~ div {
+				padding-top: 56.25%;
+				position: relative;
+				box-sizing: border-box;
 			}
 			@media (min-width: 1851px) {
 				html {
@@ -105,16 +140,23 @@
 		<div class="container">
 			<div class="content-wrapper">
 				<header>
-					<h1>High Efficiency Video Coding</h1>
-					<h2>Base HEVC playback capabilities of your web browser</h2>
+					<h1>H.265 videos</h1>
+					<h2>Discover HEVC playback capabilities of your browser</h2>
 				</header>
 				<section>
 					<div>
-						<h3 class="em">Main profile, 1280&times;720@24FPS</h3>
-						<video src="https://ddstorage.org/samples/hevc/main720p.mp4" preload="metadata" controls></video>
+						<ul class="nav-tabs">
+							<li class="active">
+								<a href="#720p">720p / 24FPS (HD)</a>
+							</li>
+							<li>
+								<a href="#1440p">1440p / 24FPS (QHD)</a>
+							</li>
+						</ul>
+						<div id="720p"><video src="https://dvdport.net/samples/hevc/sample_1280x720.mp4" preload="metadata" controls></video></div>
+						<div id="1440p" style="display:none"><video style="object-fit:none" src="https://dvdport.net/samples/hevc/sample_2560x1440.mp4" preload="metadata" controls></video></div>
 					</div>
 					<div>
-						<p>The summary below is computed using video/mp4 as content type.</p>
 						<table>
 							<thead>
 								<tr>
@@ -226,6 +268,22 @@
 								}
 							}
 							document.querySelector('table').style.visibility = 'visible';
+
+							var tabs = document.querySelectorAll('.nav-tabs a');
+							tabs.forEach((a) => {
+								a.addEventListener('click', function(e) {
+									e.preventDefault();
+									if (!this.parentNode.classList.contains('active')) {
+										document.querySelector('li.active').className = '';
+										document.querySelectorAll('video').forEach((v) => {
+											v.pause();
+											v.parentNode.style.display = 'none';
+										});
+										document.getElementById(this.getAttribute('href').substr(1)).style.display = 'block';
+										this.parentNode.classList.add('active');
+									}
+								});
+							});
 						})();
 					</script>
 				</section>
@@ -238,16 +296,7 @@
 							<a target="_blank" href="https://bluesky-soft.com/en/dxvac/deviceInfo/decoder/amd.html">AMD (Bluesky)</a><br/>
 							<a target="_blank" href="https://www.amd.com/en/products/graphics/radeon-for-creators/video-editing.html#tabs-b6a36ad588-item-0cb6dbfc4b-tab">AMD (manufacturer)</a><br/>
 							<a target="_blank" href="https://bluesky-soft.com/en/dxvac/deviceInfo/decoder/nvidia.html">NVIDIA (Bluesky)</a><br/>
-							<a target="_blank" href="https://developer.nvidia.com/video-codec-sdk">NVIDIA (manufacturer)</a> (scroll to "NVDEC - Hardware-Accelerated Video Decoding")
-						</p>
-					</div>
-					<div>
-						<h3>Microsoft Edge</h3>
-						<p>
-							Depends on Windows Media Foundation. The following components should be installed in your system:<br/>
-							&ndash; Media Feature Pack (sometimes already installed)<br/>
-							&ndash; HEVC Video Extensions from Microsoft Store<br/>
-							Open <code>edge://gpu</code> in order to checkout video decoding capabilities.
+							<a target="_blank" href="https://developer.nvidia.com/video-encode-decode-support-matrix">NVIDIA (manufacturer)</a>
 						</p>
 					</div>
 					<div>
@@ -264,16 +313,23 @@
 							<a target="_blank" href="https://support.apple.com/en-us/116944">Using HEVC media on Apple devices</a><br/>
 							<!--<a target="_blank" href="https://developer.apple.com/documentation/avfoundation/avvideocodectype/2875385-hevc">AVFoundation HEVC</a>-->
 						</p>
+					</div>					
+					<div>
+						<h3>Microsoft Edge</h3>
+						<p>
+							Depends on Windows Media Foundation. The following OS components should be installed:<br/>
+							&ndash; Media Feature Pack<br/>
+							&ndash; HEVC Video Extensions from Microsoft Store<br/>
+							Open <code>edge://gpu</code> in order to checkout video decoding capabilities.
+						</p>
 					</div>
 					<div>
 						<h3>Mozilla Firefox</h3>
 						<p>
-							Same as Microsoft Edge. In addition, two flags have to be set via <code>about:config</code> section:<br/>
-							<pre>
-								media.wmf.enabled
-								media.wmf.hevc.enabled
-							</pre>
-							Open <code>about://support</code> in order to checkout available media codecs.
+							Same as Microsoft Edge. In addition, two flags have to be set on <code>about:config</code> page:<br/>
+							<code>media.wmf.enabled</code> &nbsp; <code>media.wmf.hevc.enabled</code><br/>
+							These flags are set by default in latest builds.
+							Open <code>about:support</code> in order to checkout available media codecs.
 						</p>
 					</div>
 				</section>
